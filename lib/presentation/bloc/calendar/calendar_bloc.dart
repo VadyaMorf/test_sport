@@ -27,6 +27,12 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarEventState> {
       final dateKey = event.event.date.toIso8601String().substring(0, 10);
       await _prefs.addEvent(dateKey, event.event);
 
+      try {
+        await calendarRepository.sendCalendarEvent(event: event.event);
+      } catch (e) {
+        print(e);
+      }
+
       final dates = await _prefs.getAllEventDateKeys();
       final bool withinCurrentMonth =
           _currentYear != null &&

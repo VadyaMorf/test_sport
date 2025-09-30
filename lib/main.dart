@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:test_app/data/models/user_model.dart';
 import 'package:test_app/data/repositories/auth_repository.dart';
 import 'package:test_app/data/repositories/calendar_repository.dart';
@@ -58,6 +59,13 @@ class MyApp extends StatelessWidget {
           child: child ?? const SizedBox.shrink(),
         );
       },
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [Locale('en'), Locale('uk')],
+      locale: const Locale('uk'),
       home: const AuthScreen(),
       routes: {
         "/login": (context) => const AuthScreen(),

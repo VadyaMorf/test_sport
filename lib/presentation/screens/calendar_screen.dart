@@ -179,11 +179,11 @@ class _CalendarScreenState extends State<CalendarScreen>
   }
 
   Future<dynamic> openModal(BuildContext context) {
+    DateTime selectedDate = _selected;
     return showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       builder: (BuildContext context) {
-        DateTime selectedDate = _selected;
         return SafeArea(
           child: Padding(
             padding: EdgeInsets.only(
